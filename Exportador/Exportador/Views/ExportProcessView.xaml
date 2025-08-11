@@ -1,0 +1,76 @@
+﻿<UserControl x:Class="Exportador.UI.Views.ExportProcessView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:behaviors="clr-namespace:Exportador.UI.Behaviors"
+             xmlns:services="clr-namespace:Exportador.UI.Services"
+             mc:Ignorable="d"
+             Background="#F5F7FA" d:DesignWidth="880">
+
+    <Grid>
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 30 0 13" Width="700">
+            <TextBlock Text="Passo 4 de 5: Processo de Exportação"
+                       FontSize="16" FontWeight="SemiBold" Foreground="#7F8C8D" Margin="0 0 0 20"/>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0 0 0 30">
+                <Canvas Width="60" Height="60" HorizontalAlignment="Center">
+                    <Ellipse Width="60" Height="60" Stroke="#3498DB" StrokeThickness="1" Canvas.Left="0" Canvas.Top="0" />
+                    <Image Source="/Images/exportacao.png" Width="42" Height="42" Canvas.Left="9" Canvas.Top="9"  RenderOptions.BitmapScalingMode="HighQuality" />
+                </Canvas>
+                <TextBlock Text="Processo de Exportação"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="#34495E"
+                           Margin="0 20 0 0"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="Acompanhe o progresso da exportação dos dados"
+                           FontSize="16"
+                           Foreground="#7F8C8D"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Margin="10">
+                <Border Background="#F5F5F5" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="5" Padding="5" Margin="0,20,0,0">      
+                    <StackPanel>
+                        <TextBlock Text="Status da Exportação" FontSize="20" FontWeight="SemiBold" />
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <TextBlock FontSize="15" Text="Clique em 'Iniciar Exportação' para começar" TextWrapping="Wrap" Foreground="#7F8C8D"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0 0 0 4">
+                                <TextBlock Text="Progresso" FontSize="15" Width="329" HorizontalAlignment="Left"/>
+                                <TextBlock Text="{Binding ExportProgress, StringFormat={}{0}%}" FontSize="15" Width="314" TextAlignment="Right"/>
+                            </StackPanel>
+                            <ProgressBar x:Name="MyProgressBar" Height="10" Minimum="0" Maximum="100" Value="{Binding ExportProgress}"/>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+                <Button Grid.Row="3" Grid.Column="0" Grid.ColumnSpan="2" Content="Iniciar Exportação" 
+                    Style="{StaticResource NavigationButtonStyle}" 
+                    HorizontalAlignment="Right" Margin="0 10 0 0" 
+                    Command="{Binding StartExportCommand}"/> 
+                <Border Background="#F5F5F5" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="5" Padding="10" Margin="0,10,0,0">
+                    <StackPanel>
+                        <TextBlock Text="Log de Atividades" FontSize="20" FontWeight="SemiBold" Margin="0,0,0,10" />
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <TextBlock FontSize="15" Text="Acompanhe as atividades detalhadas do processo" TextWrapping="Wrap" Foreground="#7F8C8D"/>
+                            </StackPanel>
+                            <Border Background="#F5F5F5" BorderBrush="#E0E0E0" BorderThickness="1" CornerRadius="5" Padding="10" MinHeight="160" MaxHeight="160">
+                                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                                    <TextBlock FontSize="12"
+                                               Text="{Binding ActivityLog}"
+                                               Foreground="#7F8C8D"
+                                               TextWrapping="Wrap"/>
+                                </ScrollViewer>
+                            </Border>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

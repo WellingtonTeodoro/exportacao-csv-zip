@@ -1,0 +1,150 @@
+﻿<UserControl x:Class="Exportador.UI.Views.DestinationDirectoryView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:behaviors="clr-namespace:Exportador.UI.Behaviors"
+             xmlns:services="clr-namespace:Exportador.UI.Services"
+             xmlns:converters="clr-namespace:Exportador.UI.Converters"
+             mc:Ignorable="d"
+             Background="#F5F7FA" d:DesignWidth="880">
+
+    <UserControl.Resources>
+        <BooleanToVisibilityConverter x:Key="BooleanToVisibilityConverter" />
+        <converters:StepIndicatorConverter x:Key="StepIndicatorConverter" />
+    </UserControl.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Grid.Row="1" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0 30 0 13" Width="700">
+            <TextBlock Text="Passo 3 de 5: Diretório de Destino"
+                       FontSize="16" FontWeight="SemiBold" Foreground="#7F8C8D" Margin="0 0 0 20"/>
+
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Center" Margin="0 0 0 30">
+                <Canvas Width="60" Height="60" HorizontalAlignment="Center">
+                    <Ellipse Width="60" Height="60" Stroke="#3498DB" StrokeThickness="1" Canvas.Left="0" Canvas.Top="0" />
+                    <Image Source="/Images/pasta.png" Width="42" Height="42" Canvas.Left="9" Canvas.Top="9"  RenderOptions.BitmapScalingMode="HighQuality" />
+                </Canvas>
+                <TextBlock Text="Diretório de Destino"
+                           FontSize="28"
+                           FontWeight="Bold"
+                           Foreground="#34495E"
+                           Margin="0 20 0 10"
+                           HorizontalAlignment="Center"/>
+                <TextBlock Text="Escolha onde salvar o arquivo ZIP com os dados exportados"
+                           FontSize="16"
+                           Foreground="#7F8C8D"
+                           TextWrapping="Wrap"
+                           TextAlignment="Center"/>
+            </StackPanel>
+
+            <StackPanel Margin="20">
+                <TextBlock Text="Configurações de Destino"
+                           FontSize="18"
+                           FontWeight="SemiBold"
+                           Margin="0,0,0,5"
+                           Foreground="#333333"/>
+
+                <TextBlock Text="Defina o local e nome do arquivo de exportação"
+                           FontSize="13"
+                           Foreground="#666666"
+                           Margin="0,0,0,20"/>
+
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Diretório de Destino" VerticalAlignment="Center"
+                           Foreground="#333333" HorizontalAlignment="Left" FontWeight="Bold"/>
+
+                    <Button Grid.Column="1" Margin="5,0,0,0" Padding="15,0" Grid.ColumnSpan="2" BorderBrush="#CCCCCC" BorderThickness="1">
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                            <TextBox Text="{Binding SelectedDirectory, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
+                                Width="418" IsReadOnly="True" VerticalAlignment="Center" BorderBrush="#CCCCCC" BorderThickness="1"/>
+                            <Button Content="Procurar" Command="{Binding BrowseDestinationDirectoryCommand}" Style="{StaticResource NavigationButtonStyle}" Margin="10 0 0 0" Width="67"/>
+                        </StackPanel>
+                    </Button>
+
+                </Grid>
+
+                <Grid Margin="0,10,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0" Content="Nome do Arquivo" VerticalAlignment="Center"
+                           Foreground="#333333" HorizontalAlignment="Left" FontWeight="Bold"/>
+
+                    <TextBox Grid.Column="1"
+                             Text="{Binding OutputFileName, UpdateSourceTrigger=PropertyChanged}"
+                             Height="28"
+                             VerticalContentAlignment="Center"
+                             HorizontalAlignment="Stretch"
+                             BorderBrush="#CCCCCC" BorderThickness="1"/>
+
+                    <TextBlock Grid.Column="2"
+                               Text=".zip"
+                               VerticalAlignment="Center"
+                               Margin="5,0,0,0"
+                               Foreground="#333333"
+                               FontWeight="SemiBold"/>
+                </Grid>
+
+                <Border BorderBrush="#BDC3C7" BorderThickness="1" CornerRadius="4" Padding="8" Margin="0,10,0,20"
+                        Background="#E8F0F5">
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock FontSize="15" Text="Arquivo será salvo em: " TextWrapping="Wrap" Foreground="#FF7C93F3"/>
+                        <Viewbox Width="20" Height="20" Margin="0 0 8 0">
+                            <Canvas Width="24" Height="24">
+                                <Path Data="M10 4H4C2.9 4 2.01 4.9 2.01 6L2 18C2 19.1 2.9 20 4 20H20C21.1 20 22 19.1 22 18V8C22 6.9 21.1 6 20 6H12L10 4Z" Fill="#3498DB"/>
+                            </Canvas>
+                        </Viewbox>
+                        <TextBlock Text="{Binding FullExportFilePath}" FontWeight="SemiBold" Foreground="#34495E" TextWrapping="Wrap" VerticalAlignment="Center"/>
+                    </StackPanel>
+                </Border>
+                <Border Background="#F5F5F5"
+                        BorderBrush="#E0E0E0"
+                        BorderThickness="1"
+                        CornerRadius="5"
+                        Padding="22">
+                    <StackPanel>
+                        <TextBlock Text="Informações do Arquivo"
+                                   FontSize="20"
+                                   FontWeight="SemiBold"
+                                   Margin="0,0,0,10"
+                                   Foreground="#FF7C93F3"/>
+                        <StackPanel Orientation="Vertical">
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <TextBlock Text="• " FontWeight="Bold" Foreground="#FF7C93F3" />
+                                <TextBlock FontSize="15" Text="O arquivo será compactado em formato ZIP" TextWrapping="Wrap" Foreground="#FF7C93F3"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <TextBlock Text="• " FontWeight="Bold" Foreground="#FF7C93F3" />
+                                <TextBlock FontSize="15" Text="Cada categoria será exportada em arquivos CSV separados" TextWrapping="Wrap" Foreground="#FF7C93F3"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal" Margin="0,0,0,5">
+                                <TextBlock Text="• " FontWeight="Bold" Foreground="#FF7C93F3" />
+                                <TextBlock FontSize="15" Text="O Log será visualizado com detalhes no momento da exportação" TextWrapping="Wrap" Foreground="#FF7C93F3"/>
+                            </StackPanel>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="• " FontWeight="Bold" Foreground="#FF7C93F3" />
+                                <TextBlock FontSize="15" Text="Tamanho estimado: 0-25 MB (dependendo das categorias selecionadas)" TextWrapping="Wrap" Foreground="#FF7C93F3"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </Border>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

@@ -1,0 +1,12 @@
+﻿<?xml version='1.0' encoding='utf-8'?>
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="Exportador.UI.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="DestinationDirectoryPath" Type="System.String" Scope="User">
+      <Value Profile="(Default)">C:\Temp\ExportadorFusion</Value>
+    </Setting>
+    <Setting Name="OutputFileName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">fusion_export</Value>
+    </Setting>
+  </Settings>
+</SettingsFile>

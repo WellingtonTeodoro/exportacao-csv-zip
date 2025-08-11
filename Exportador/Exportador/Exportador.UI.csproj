@@ -1,0 +1,83 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <LangVersion>latest</LangVersion>
+    <UseWindowsForms>true</UseWindowsForms>
+
+    <PublishSingleFile>true</PublishSingleFile>
+    <SelfContained>true</SelfContained>
+    <RuntimeIdentifier>win-x64</RuntimeIdentifier>
+    <IncludeNativeLibrariesForSelfExtract>true</IncludeNativeLibrariesForSelfExtract>
+    <EnableCompressionInSingleFile>true</EnableCompressionInSingleFile>
+    </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Images\add.png" />
+    <None Remove="Images\adicionar-pasta.png" />
+    <None Remove="Images\cliente.png" />
+    <None Remove="Images\entidade.png" />
+    <None Remove="Images\exportacao-de-arquivo.png" />
+    <None Remove="Images\exportacao.png" />
+    <None Remove="Images\grandes-dados.png" />
+    <None Remove="Images\history.png" />
+    <None Remove="Images\pasta.png" />
+    <None Remove="Images\product.png" />
+    <None Remove="Images\resultado.png" />
+    <None Remove="Images\servidor.png" />
+    <None Remove="Images\sub.png" />
+    <None Remove="Images\subpasta.png" />
+    <None Remove="Images\usuario-da-rede.png" />
+    <None Remove="Images\verificacao-de-resumo.png" />
+  </ItemGroup> 
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.7" />
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+    <PackageReference Include="Serilog" Version="4.3.0" />
+    <PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
+    <PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Exportador.Application\Exportador.Application.csproj" />
+    <ProjectReference Include="..\Exportador.Infrastructure\Exportador.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Images\add.png" />
+    <Resource Include="Images\cliente.png" />
+    <Resource Include="Images\entidade.png" />
+    <Resource Include="Images\exportacao.png" />
+    <Resource Include="Images\history.png" />
+    <Resource Include="Images\pasta.png" />
+    <Resource Include="Images\product.png" />
+    <Resource Include="Images\resultado.png" />
+    <Resource Include="Images\servidor.png" />
+    <Resource Include="Images\sub.png" />
+    <Resource Include="Images\subpasta.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Properties\Settings.Designer.cs">
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+</Project>
