@@ -56,7 +56,7 @@ Este projeto implementa uma solução robusta e escalável para exportação de 
 
 # Scripts SQL
 
-Todos os scripts SQL para SQL Server estão na pasta [`CodigoSQL/`](exportacao-csv-zip/Exportador.Infrastructure/CodigoSQL).
+Todos os scripts SQL para SQL Server estão na pasta [`CodigoSQL/`](https://github.com/WellingtonTeodoro/exportacao-csv-zip/tree/main/Exportador.Infrastructure/CodigoSQL).
 
 ## Conteúdo
 
