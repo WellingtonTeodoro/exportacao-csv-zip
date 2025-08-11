@@ -79,7 +79,8 @@ Todos os scripts SQL para SQL Server estão na pasta [`CodigoSQL/`](https://gith
 
 ## Atenção?
 
-O windows pode bloquear a criação de um arquivo com o mesmo nome, caso este já exista na mesma pasta ao iniciar a exportação!
+O windows pode bloquear a criação de um arquivo com o mesmo nome, caso este já exista na mesma pasta ao iniciar a exportação, caso seu usuário não tenha permissão total!
+Em outras palavras, a exportação falhará!
 
 ## Contato
 
